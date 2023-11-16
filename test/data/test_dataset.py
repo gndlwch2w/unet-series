@@ -1,4 +1,4 @@
-from ...data import *
+from data import *
 from torch.utils.data import DataLoader
 from unittest import TestCase
 from tqdm import tqdm
