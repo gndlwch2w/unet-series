@@ -29,7 +29,6 @@ tsf = Compose([
     Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
 
-
 def train_net(net, device, epochs, batch_size, lr, save_cp=True):
     train_dataset = ISIC2018Dataset(dir_train_imgs, dir_train_labels, tsf)
     valid_dataset = ISIC2018Dataset(dir_valid_imgs, dir_valid_labels, tsf)
@@ -142,7 +141,6 @@ def train_net(net, device, epochs, batch_size, lr, save_cp=True):
             logging.info(f'Checkpoint {epoch + 1} saved !')
 
     writer.close()
-
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO,

@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 
-
 class CenterLoss(nn.Module):
     """Center loss.
 
@@ -39,8 +38,8 @@ class CenterLoss(nn.Module):
         # https://blog.51cto.com/u_13946099/6081092
         # (x - c) ^ 2
         distmat = torch.pow(x, 2).sum(dim=1, keepdim=True).expand(batch_size, self.num_classes) + \
-            torch.pow(self.centers, 2).sum(dim=1, keepdim=True).expand(
-                self.num_classes, batch_size).t()
+                  torch.pow(self.centers, 2).sum(dim=1, keepdim=True).expand(
+                      self.num_classes, batch_size).t()
         # 1 * distmat - 2 * x @ c.T
         distmat.addmm_(1, -2, x, self.centers.t())
 

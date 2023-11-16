@@ -2,7 +2,6 @@ import warnings
 import torch
 from torch.autograd import Function
 
-
 class DiceCoeff(Function):
     """Dice coeff for individual examples"""
 
@@ -23,13 +22,12 @@ class DiceCoeff(Function):
         grad_input = grad_target = None
         if ctx.needs_input_grad[0]:
             grad_input = grad_output * 2 * \
-                (target * union - inter) / (union * union)
+                         (target * union - inter) / (union * union)
         if ctx.needs_input_grad[1]:
             warnings.warn(
                 "This function has only a single output, so it gets only one gradient")
             grad_target = None
         return grad_input, grad_target
-
 
 def dice_coeff(input, target):
     """Dice coeff for batches"""

@@ -1,7 +1,6 @@
 import torch
 from torch import nn
 
-
 class WeightedBCELoss(nn.Module):
     def __init__(self, pos_weight):
         super(WeightedBCELoss, self).__init__()
